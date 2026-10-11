@@ -91,7 +91,7 @@ app.post("/api/orders", (req, res) => {
 });
 app.patch("/api/orders/:id", (req, res) => {
   const order = orders.find(o => o.id === req.params.id);
-  if (!order) return res.status(404).json({ error: "Order not found." });
+  if (!order) return res.status(404).json({ error: "Order not found. ok" });
   const { status, paymentStatus } = req.body ?? {};
   if (status && ["New", "Preparing", "Ready", "Served"].includes(status)) order.status = status;
   if (paymentStatus && ["Unpaid", "Paid"].includes(paymentStatus)) order.paymentStatus = paymentStatus;
